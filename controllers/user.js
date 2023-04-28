@@ -59,8 +59,9 @@ import { sendCookie } from "../utils/features.js"
     password:hassedPassword
   })
 
+  sendCookie(user, res, "Registered Successfully", 201);
 
-  sendCookie(Userr,message="Registerd succesfully",res);
+
   } catch (error) {
     console.log(error)
   }

@@ -1,16 +1,17 @@
-import jwt from "jsonwebtoken"
+import jwt from "jsonwebtoken";
 
-export const sendCookie = (Userr,res,message,statusCode=201)=>{
-    const token = jwt.sign({_id:Userr._id},process.env.JWT_SECRET)
-  
-    res.status(statusCode).cookie("token",token,{
-      httpOnly:true,
-      maxAge:15*60*1000, // 15 min m cookie expire hogaye ga
-      sameSite:process.env.NODE_ENV==="DEVELOPMENT"?"lax":"none", //backend kisi or url pr rhe ga or fronend kisi or url pr 
-      secure:process.env.NODE_ENV==="DEVELOPMENT"?false:true
-    }).json({
-      success:true,
-      message
-    
+export const sendCookie = (user, res, message, statusCode = 200) => {
+  const token = jwt.sign({ _id: user._id }, process.env.JWT_SECRET);
+  res
+    .status(statusCode)
+    .cookie("token", token, {
+      httpOnly: true,
+      maxAge: 15 * 60 * 1000,
+      sameSite: process.env.NODE_ENV === "Development" ? "lax" : "none",
+      secure: process.env.NODE_ENV === "Development" ? false : true,
     })
-}
+    .json({
+      success: true,
+      message,
+    });
+};
