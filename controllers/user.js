@@ -59,7 +59,7 @@ import { sendCookie } from "../utils/features.js"
     password:hassedPassword
   })
 
-  sendCookie(user, res, "Registered Successfully", 201);
+  sendCookie(Userr, res, "Registered Successfully", 201);
 
 
   } catch (error) {
